@@ -1,0 +1,18 @@
+@import '~antd/dist/antd.css';
+
+.App {
+  background: #A1FFCE;
+  background: -webkit-linear-gradient(to left, #FAFFD1, #A1FFCE);
+  background: linear-gradient(to left, #FAFFD1, #A1FFCE);
+  height: 100vh;
+  padding: 20px;
+  .user-location{
+    color: blue;
+    .location-text{
+      margin-left: 5px;
+    }
+  }
+  .user-id{
+    color: #1890ff;
+  }
+}
