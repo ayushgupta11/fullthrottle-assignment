@@ -19,6 +19,7 @@ export default function UserList({
     }
     return (
         <div>
+            <h2>Activity Tracker</h2>
             {
                 data.loading ?
                     'Loading...'
