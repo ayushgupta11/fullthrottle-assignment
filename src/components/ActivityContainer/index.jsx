@@ -15,8 +15,9 @@ export default function ActivityContainer({
         setActivities([...currentActivities])
     }, [])
     useEffect(() => {
-        if(!visible){
+        if (!visible) {
             setShow(false)
+            setActivities([])
         }
     }, [visible])
     let getDayActivities = (date) => {
@@ -25,17 +26,30 @@ export default function ActivityContainer({
         })
         return currentActivities
     }
+    let getMonthActivities = (date) => {
+        let currentActivities = activityPeriods.filter((item) => {
+            return item.start_time.format('MM-YYYY') == date || item.start_time.format('MM-YYYY') == date
+        })
+        return currentActivities
+    }
+    const showActivities = (data) => {
+        setActivities([...data])
+        setShow(false)
+    }
     return (
         <div className="activity-container">
             {
                 show ?
-                    <ActivityCalendar getDayActivities={getDayActivities} />
-                    : !activities.length ?
-                        <div>
-                            No Activities Today
-                            <Button onClick={() => setShow(true)}>View All Activities</Button>
-                        </div>
-                        : <Activity />
+                    <ActivityCalendar getMonthActivities={getMonthActivities} getDayActivities={getDayActivities} showActivities={showActivities} />
+                    :
+                    <div className="activity-list">
+                        {
+                            !activities.length ?
+                                ' No Activities Today'
+                                : <Activity activities={activities} />
+                        }
+                        <Button type="primary" onClick={() => setShow(true)}>View All Activities</Button>
+                    </div>
             }
         </div>
     )

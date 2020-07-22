@@ -40,6 +40,7 @@ export default function AcitivityModal({
             visible={visible}
             onOk={handleClose}
             onCancel={handleClose}
+            footer={null}
         >
             <ActivityContainer activityPeriods={activityPeriods} currentDate={currentDate} visible={visible} />
         </Modal>
