@@ -1,14 +1,15 @@
 import React from 'react'
-import { List, Avatar, Badge } from 'antd'
+import { List, Avatar, Badge, Button } from 'antd'
 import { UserOutlined, CompassOutlined } from '@ant-design/icons'
 
 export default function User({
-    data
+    data,
+    openModal
 }) {
     return (
         <List.Item
             actions={[
-                <a key="list-loadmore-edit">View Activity</a>
+                <Button onClick={() => openModal(data)} type="link">View Activity</Button>
             ]}
         >
             <List.Item.Meta
@@ -25,10 +26,6 @@ export default function User({
                     </span>
                 }
             />
-            <div className="user-id">
-                <UserOutlined />
-                {data.id}
-            </div>
         </List.Item>
     )
 }
