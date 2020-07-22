@@ -38,19 +38,15 @@ export default function ActivityContainer({
     }
     return (
         <div className="activity-container">
-            {
-                show ?
-                    <ActivityCalendar getMonthActivities={getMonthActivities} getDayActivities={getDayActivities} showActivities={showActivities} />
-                    :
-                    <div className="activity-list">
-                        {
-                            !activities.length ?
-                                ' No Activities Today'
-                                : <Activity activities={activities} />
-                        }
-                        <Button type="primary" onClick={() => setShow(true)}>View All Activities</Button>
-                    </div>
-            }
+            <ActivityCalendar show={show} getMonthActivities={getMonthActivities} getDayActivities={getDayActivities} showActivities={showActivities} />
+            <div className="activity-list" style={{ display : !show ? 'flex': 'none'}}>
+                {
+                    !activities.length ?
+                        ' No Activities Today'
+                        : <Activity activities={activities} />
+                }
+                <Button type="primary" onClick={() => setShow(true)}>View All Activities</Button>
+            </div>
         </div>
     )
 }

@@ -4,7 +4,8 @@ import { Calendar, Badge, Button } from 'antd';
 export default function ActivityCalendar({
     getDayActivities,
     showActivities,
-    getMonthActivities
+    getMonthActivities,
+    show
 }) {
     const [activity, setActivity] = useState([])
     const [mode, setMode] = useState('month')
@@ -47,7 +48,7 @@ export default function ActivityCalendar({
         setActivity([...dateActivities])
     }
     return (
-        <div className="activity-calendar">
+        <div className="activity-calendar" style={{ display: show ? 'flex': 'none' }}>
         <Calendar 
             onChange={onDateChange} 
             fullscreen={false} 
