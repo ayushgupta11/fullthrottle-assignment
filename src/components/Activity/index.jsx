@@ -4,6 +4,16 @@ import { List, Tag } from 'antd'
 export default function Activity({
     activities
 }) {
+    let getTime = (item) => {
+        let minutes = item.end_time.diff(item.start_time, 'minutes')
+        let hours = Math.floor(minutes / 60)
+        if (hours) {
+            return `${hours} hours ${minutes % 60} minutes`
+        }
+        else {
+            return `${minutes} minutes`
+        }
+    }
     return (
         <List
             itemLayout="horizontal"
@@ -21,7 +31,7 @@ export default function Activity({
                         }
                     />
                     <div style={{ fontWeight: 'bold' }}>
-                        {item.end_time.diff(item.start_time, 'minutes')} minutes
+                        {getTime(item)}
                     </div>
                 </List.Item>
             )
